@@ -32,8 +32,8 @@ func main() {
 	}
 
 	// Initializa database connection
-	db, err := _db.InitPostgresDB(postgresDB, config.SourceData.PostgresDBServer, config.SourceData.PostgresDBPort,
-		config.SourceData.PostgresDBName, config.SourceData.PostgresDBUsername, config.SourceData.PostgresDBPassword,
+	db, err := _db.InitPostgresDB(postgresDB, config.SourceData.PostgresDBServer, config.SourceData.PostgresDBName,
+		config.SourceData.PostgresDBUsername, config.SourceData.PostgresDBPassword, config.SourceData.PostgresDBPort,
 		config.SourceData.PostgresDBTimeout)
 	if err != nil {
 		logrus.Fatalf("Unable to create db instance: %v", err)
