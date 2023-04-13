@@ -8,13 +8,13 @@ import (
 )
 
 // UpdateUser is function to update user by id
-func (p *postgresDB) UpdateUser(user models.Users) (models.Users, error) {
+func (p *postgresDB) UpdateUser(user *models.Users) error {
 	queryStr := fmt.Sprintf("UPDATE %s SET username = $1, email = $2, updated_at = $3 WHERE id = $4", usersTable)
 
 	_, err := p.db.Exec(queryStr, user.Username, user.Email, time.Now(), user.ID)
 	if err != nil {
-		return models.Users{}, logformat.PostgresExecResponseError(err)
+		return logformat.PostgresExecResponseError(err)
 	}
 
-	return user, nil
+	return nil
 }

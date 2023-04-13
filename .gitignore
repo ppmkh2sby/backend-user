@@ -1,1 +1,5 @@
+# folder generate from goland
 .idea
+
+# folder dependency
+vendor

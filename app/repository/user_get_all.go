@@ -11,7 +11,7 @@ import (
 func (p *postgresDB) GetAllUsers() ([]models.Users, error) {
 	var users []models.Users
 
-	queryStr := "SELECT id, username, email, card_id, santri_id, created_at, updated_at "
+	queryStr := "SELECT id, username, email, role, card_id, santri_id, created_at, updated_at "
 	queryStr += "FROM users GROUP BY id, santri_id ORDER BY santri_id ASC"
 
 	result, err := p.db.Query(queryStr)
@@ -24,7 +24,7 @@ func (p *postgresDB) GetAllUsers() ([]models.Users, error) {
 
 	for result.Next() {
 		user := models.Users{}
-		err = result.Scan(&user.ID, &user.Username, &user.Email, &user.CardID, &user.SantriID, &user.CreatedAt, &user.UpdatedAt)
+		err = result.Scan(&user.ID, &user.Username, &user.Email, &user.Role, &user.CardID, &user.SantriID, &user.CreatedAt, &user.UpdatedAt)
 		if err != nil {
 			return nil, logformat.PostgresScanError(err)
 		}

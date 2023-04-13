@@ -3,16 +3,16 @@ package repository
 import (
 	"fmt"
 	"github.com/ppmkh2sby/backend-library/helpers/logformat"
-	"github.com/ppmkh2sby/backend-library/models"
 )
 
-func (p *postgresDB) ChangePasswordUser(user models.Users) (models.Users, error) {
+// ChangePasswordUser is function to change user's password
+func (p *postgresDB) ChangePasswordUser(id, password string) error {
 	queryStr := fmt.Sprintf("UPDATE %s SET password = $1 WHERE id = $2", usersTable)
 
-	_, err := p.db.Exec(queryStr, user.Password, user.ID)
+	_, err := p.db.Exec(queryStr, password, id)
 	if err != nil {
-		return models.Users{}, logformat.PostgresExecResponseError(err)
+		return logformat.PostgresExecResponseError(err)
 	}
 
-	return models.Users{ID: user.ID}, err
+	return nil
 }

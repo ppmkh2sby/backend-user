@@ -10,7 +10,7 @@ import (
 func (p *postgresDB) GetUserByID(id string) (*models.Users, error) {
 	var user *models.Users
 
-	queryStr := "SELECT id, username, email, card_id, santri_id, created_at, updated_at "
+	queryStr := "SELECT id, username, email, role, card_id, santri_id, created_at, updated_at "
 	queryStr += fmt.Sprintf("FROM %s WHERE id = %s", usersTable, id)
 
 	result, err := p.db.Query(queryStr)
@@ -19,7 +19,7 @@ func (p *postgresDB) GetUserByID(id string) (*models.Users, error) {
 	}
 
 	for result.Next() {
-		err = result.Scan(&user.ID, &user.Username, &user.Email, &user.CardID, &user.SantriID, &user.CreatedAt, &user.UpdatedAt)
+		err = result.Scan(&user.ID, &user.Username, &user.Email, &user.Role, &user.CardID, &user.SantriID, &user.CreatedAt, &user.UpdatedAt)
 	}
 
 	return user, nil
