@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/gofiber/fiber/v2"
+	"github.com/ppmkh2sby/backend-user/app/route"
 	"github.com/ppmkh2sby/backend-user/config"
 	_db "github.com/ppmkh2sby/backend-user/db"
 	"github.com/sirupsen/logrus"
@@ -39,4 +41,8 @@ func main() {
 		logrus.Fatalf("Unable to create db instance: %v", err)
 	}
 	logrus.Infof("Success create postgreDB instance")
+
+	app := fiber.New()
+
+	route.Init(app, db)
 }
