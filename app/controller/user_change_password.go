@@ -5,7 +5,7 @@ import (
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
-func (u *userController) ChangePasswordUser(c fiber.Ctx) error {
+func (u *userController) ChangePasswordUser(c *fiber.Ctx) error {
 	var user models.Users
 	err := c.BodyParser(&user)
 	if err != nil {

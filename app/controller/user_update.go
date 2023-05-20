@@ -6,7 +6,7 @@ import (
 )
 
 // UpdateUser is controller to update data user on database
-func (u *userController) UpdateUser(c fiber.Ctx) error {
+func (u *userController) UpdateUser(c *fiber.Ctx) error {
 	var user models.Users
 	err := c.BodyParser(&user)
 	if err != nil {

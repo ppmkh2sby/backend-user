@@ -6,7 +6,7 @@ import (
 )
 
 // SignInUser is controller to sign user
-func (u *userController) SignInUser(c fiber.Ctx) error {
+func (u *userController) SignInUser(c *fiber.Ctx) error {
 	var user models.Users
 	err := c.BodyParser(&user)
 	if err != nil {

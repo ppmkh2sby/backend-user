@@ -10,13 +10,13 @@ type userController struct {
 }
 
 type UserController interface {
-	SignUpUser(c fiber.Ctx) error
-	SingInUser(c fiber.Ctx) error
-	GetAllUsers(c fiber.Ctx) error
-	GetUserByID(c fiber.Ctx) error
-	UpdateUser(c fiber.Ctx) error
-	DeleteUser(c fiber.Ctx) error
-	ChangePasswordUser(c fiber.Ctx) error
+	SignUpUser(c *fiber.Ctx) error
+	SingInUser(c *fiber.Ctx) error
+	GetAllUsers(c *fiber.Ctx) error
+	GetUserByID(c *fiber.Ctx) error
+	UpdateUser(c *fiber.Ctx) error
+	DeleteUser(c *fiber.Ctx) error
+	ChangePasswordUser(c *fiber.Ctx) error
 }
 
 // NewUserController is function to intial User Controller
