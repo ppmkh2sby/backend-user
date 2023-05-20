@@ -43,6 +43,10 @@ func main() {
 	logrus.Infof("Success create postgreDB instance")
 
 	app := fiber.New()
-
 	route.Init(app, db)
+
+	err = app.Listen(config.ServiceData.Address)
+	if err != nil {
+		logrus.Fatalf("Unable to run http server: %v", err)
+	}
 }

@@ -3,3 +3,6 @@
 
 # folder dependency
 vendor
+
+# folder build app
+_bin
