@@ -5,7 +5,7 @@ import (
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
-// SingInUser is funstion to sign in user
+// SingInUser is function on usecase to handle sign in user
 func (u *userUsecase) SignInUser(user *models.Users) (*models.Users, error) {
 	userDB, err := u.userRepository.GetUserByUsername(user.Username)
 	if err != nil {

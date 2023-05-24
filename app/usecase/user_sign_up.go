@@ -5,7 +5,7 @@ import (
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
-// SignUpUser is function to create user
+// SignUpUser is function on usecase to handle create user
 func (u *userUsecase) SignUpUser(user *models.Users) (*models.Users, error) {
 	var err error
 	user.ID, err = generate.CreateUUID()

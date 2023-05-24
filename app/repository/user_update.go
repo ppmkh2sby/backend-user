@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// UpdateUser is function to update user by id
+// UpdateUser is function on repository to handle update user by id
 func (p *postgresDB) UpdateUser(user *models.Users) error {
 	queryStr := fmt.Sprintf("UPDATE %s SET username = $1, email = $2, updated_at = $3 WHERE id = $4", usersTable)
 

@@ -7,7 +7,7 @@ import (
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
-// GetAllUsers is function for get all user
+// GetAllUsers is function on repository for get all user
 func (p *postgresDB) GetAllUsers() ([]models.Users, error) {
 	var users []models.Users
 

@@ -1,6 +1,6 @@
 package usecase
 
-// DeleteUser is function to delete user from database
+// DeleteUser is function on usecase to handle delete user from database
 func (u *userUsecase) DeleteUser(id string) error {
 	err := u.userRepository.DeleteUser(id)
 	if err != nil {

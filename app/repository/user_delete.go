@@ -5,7 +5,7 @@ import (
 	"github.com/ppmkh2sby/backend-library/helpers/logformat"
 )
 
-// DeleteUser is funtion to delete user from database
+// DeleteUser is function on repository to handle delete user from database
 func (p *postgresDB) DeleteUser(id string) error {
 	queryStr := fmt.Sprintf("DELETE FROM %s WHERE id = $1", usersTable)
 

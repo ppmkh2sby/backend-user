@@ -6,7 +6,7 @@ import (
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
-// GetUserByID is function for get user specific by id user
+// GetUserByID is function on repository for get user specific by id user
 func (p *postgresDB) GetUserByID(id string) (*models.Users, error) {
 	var user *models.Users
 

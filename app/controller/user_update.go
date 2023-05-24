@@ -5,7 +5,7 @@ import (
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
-// UpdateUser is controller to update data user on database
+// UpdateUser is function on controller to handle update data user on database
 func (u *userController) UpdateUser(c *fiber.Ctx) error {
 	var user models.Users
 	err := c.BodyParser(&user)

@@ -5,6 +5,7 @@ import (
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
+// ChangePasswordUser is function on controller to handle change of user password
 func (u *userController) ChangePasswordUser(c *fiber.Ctx) error {
 	var user models.Users
 	err := c.BodyParser(&user)

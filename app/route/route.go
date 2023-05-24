@@ -10,6 +10,7 @@ import (
 	"github.com/ppmkh2sby/backend-user/db"
 )
 
+// Init is function to initial route app
 func Init(app *fiber.App, db *db.PostgresDB) {
 	userRepository := repository.NewUserRepository(db.DB)
 	userUsecase := usecase.NewUserUsecase(userRepository)

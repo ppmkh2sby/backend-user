@@ -5,7 +5,7 @@ import (
 	"github.com/ppmkh2sby/backend-library/helpers/logformat"
 )
 
-// ChangePasswordUser is function to change user's password
+// ChangePasswordUser is function on repository to handle change user's password
 func (p *postgresDB) ChangePasswordUser(id, password string) error {
 	queryStr := fmt.Sprintf("UPDATE %s SET password = $1 WHERE id = $2", usersTable)
 

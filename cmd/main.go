@@ -33,7 +33,7 @@ func main() {
 		logrus.Fatalf("Unable to load configuration: %w", err)
 	}
 
-	// Initializa database connection
+	// Initialize database connection
 	db, err := _db.InitPostgresDB(postgresDB, config.SourceData.PostgresDBServer, config.SourceData.PostgresDBName,
 		config.SourceData.PostgresDBUsername, config.SourceData.PostgresDBPassword, config.SourceData.PostgresDBPort,
 		config.SourceData.PostgresDBTimeout)
@@ -42,11 +42,15 @@ func main() {
 	}
 	logrus.Infof("Success create postgreDB instance")
 
+	// Routing app with fiber
 	app := fiber.New()
 	route.Init(app, db)
+	logrus.Infof("Success routing app ... ")
 
+	// Running app
 	err = app.Listen(config.ServiceData.Address)
 	if err != nil {
 		logrus.Fatalf("Unable to run http server: %v", err)
 	}
+	logrus.Infof("Service be running at: %v", config.ServiceData.Address)
 }

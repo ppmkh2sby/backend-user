@@ -5,6 +5,7 @@ import (
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
+// SignUpUser is function on controller to handle sign up user
 func (u *userController) SignUpUser(c *fiber.Ctx) error {
 	var user models.Users
 	err := c.BodyParser(&user)

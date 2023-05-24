@@ -6,7 +6,7 @@ import (
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
-// GetUserByUsername is function to get user by username for sign in
+// GetUserByUsername is function on repository to handle get user by username for sign in
 func (p *postgresDB) GetUserByUsername(username string) (*models.Users, error) {
 	var user models.Users
 

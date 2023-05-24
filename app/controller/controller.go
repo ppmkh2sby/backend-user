@@ -19,7 +19,7 @@ type UserController interface {
 	ChangePasswordUser(c *fiber.Ctx) error
 }
 
-// NewUserController is function to intial User Controller
+// NewUserController is function to initial User Controller
 func NewUserController(u usecase.UserUsecase) *userController {
 	return &userController{
 		userService: u,

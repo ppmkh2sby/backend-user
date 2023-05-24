@@ -2,6 +2,7 @@ package controller
 
 import "github.com/gofiber/fiber/v2"
 
+// DeleteUser is function on controller to handle delete user
 func (u *userController) DeleteUser(c *fiber.Ctx) error {
 	id := c.Params("id")
 
