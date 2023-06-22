@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"context"
 	"database/sql"
 	"github.com/ppmkh2sby/backend-library/models"
 )
@@ -14,13 +15,13 @@ type postgresDB struct {
 }
 
 type UserRepository interface {
-	GetAllUsers() ([]models.Users, error)
-	GetUserByID(id string) (*models.Users, error)
-	GetUserByUsername(username string) (*models.Users, error)
-	CreateUser(user *models.Users) (*models.Users, error)
-	UpdateUser(user *models.Users) error
-	DeleteUser(id string) error
-	ChangePasswordUser(id, password string) error
+	GetAllUsers(ctx context.Context) ([]models.Users, error)
+	GetUserByID(ctx context.Context, id string) (*models.Users, error)
+	GetUserByUsername(ctx context.Context, username string) (*models.Users, error)
+	CreateUser(ctx context.Context, user *models.Users) (*models.Users, error)
+	UpdateUser(ctx context.Context, user *models.Users) error
+	DeleteUser(ctx context.Context, id string) error
+	ChangePasswordUser(ctx context.Context, id, password string) error
 }
 
 // NewUserRepository is function to initial user repository

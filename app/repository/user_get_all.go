@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"context"
 	"database/sql"
 	"errors"
 	"github.com/ppmkh2sby/backend-library/helpers/logformat"
@@ -8,7 +9,7 @@ import (
 )
 
 // GetAllUsers is function on repository for get all user
-func (p *postgresDB) GetAllUsers() ([]models.Users, error) {
+func (p *postgresDB) GetAllUsers(ctx context.Context) ([]models.Users, error) {
 	var users []models.Users
 
 	queryStr := "SELECT id, username, email, role, card_id, santri_id, created_at, updated_at "

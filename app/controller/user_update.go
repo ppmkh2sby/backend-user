@@ -13,8 +13,9 @@ func (u *userController) UpdateUser(c *fiber.Ctx) error {
 		return err
 	}
 	user.ID = c.Params("id")
+	ctx := c.Context()
 
-	response, err := u.userService.UpdateUser(&user)
+	response, err := u.userService.UpdateUser(ctx, &user)
 	if err != nil {
 		return err
 	}

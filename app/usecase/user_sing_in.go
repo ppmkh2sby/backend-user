@@ -1,13 +1,14 @@
 package usecase
 
 import (
+	"context"
 	"github.com/ppmkh2sby/backend-library/helpers/generate"
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
 // SingInUser is function on usecase to handle sign in user
-func (u *userUsecase) SignInUser(user *models.Users) (*models.Users, error) {
-	userDB, err := u.userRepository.GetUserByUsername(user.Username)
+func (u *userUsecase) SignInUser(ctx context.Context, user *models.Users) (*models.Users, error) {
+	userDB, err := u.userRepository.GetUserByUsername(ctx, user.Username)
 	if err != nil {
 		return nil, err
 	}
@@ -17,7 +18,7 @@ func (u *userUsecase) SignInUser(user *models.Users) (*models.Users, error) {
 		return nil, err
 	}
 
-	userResponse, err := u.userRepository.GetUserByID(userDB.ID)
+	userResponse, err := u.userRepository.GetUserByID(ctx, userDB.ID)
 	if err != nil {
 		return nil, err
 	}

@@ -13,8 +13,9 @@ func (u *userController) ChangePasswordUser(c *fiber.Ctx) error {
 		return err
 	}
 	user.ID = c.Params("id")
+	ctx := c.Context()
 
-	err = u.userService.ChangePasswordUser(user.ID, user.Password)
+	err = u.userService.ChangePasswordUser(ctx, user.ID, user.Password)
 	if err != nil {
 		return err
 	}

@@ -12,8 +12,9 @@ func (u *userController) SignInUser(c *fiber.Ctx) error {
 	if err != nil {
 		return err
 	}
+	ctx := c.Context()
 
-	response, err := u.userService.SignInUser(&user)
+	response, err := u.userService.SignInUser(ctx, &user)
 	if err != nil {
 		return err
 	}

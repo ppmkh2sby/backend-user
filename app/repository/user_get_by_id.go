@@ -1,13 +1,14 @@
 package repository
 
 import (
+	"context"
 	"fmt"
 	"github.com/ppmkh2sby/backend-library/helpers/logformat"
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
 // GetUserByID is function on repository for get user specific by id user
-func (p *postgresDB) GetUserByID(id string) (*models.Users, error) {
+func (p *postgresDB) GetUserByID(ctx context.Context, id string) (*models.Users, error) {
 	var user *models.Users
 
 	queryStr := "SELECT id, username, email, role, card_id, santri_id, created_at, updated_at "

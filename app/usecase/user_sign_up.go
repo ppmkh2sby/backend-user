@@ -1,12 +1,13 @@
 package usecase
 
 import (
+	"context"
 	"github.com/ppmkh2sby/backend-library/helpers/generate"
 	"github.com/ppmkh2sby/backend-library/models"
 )
 
 // SignUpUser is function on usecase to handle create user
-func (u *userUsecase) SignUpUser(user *models.Users) (*models.Users, error) {
+func (u *userUsecase) SignUpUser(ctx context.Context, user *models.Users) (*models.Users, error) {
 	var err error
 	user.ID, err = generate.CreateUUID()
 	if err != nil {
@@ -18,7 +19,7 @@ func (u *userUsecase) SignUpUser(user *models.Users) (*models.Users, error) {
 		return nil, err
 	}
 
-	user, err = u.userRepository.CreateUser(user)
+	user, err = u.userRepository.CreateUser(ctx, user)
 	if err != nil {
 		return nil, err
 	}

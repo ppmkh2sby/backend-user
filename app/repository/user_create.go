@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"context"
 	"fmt"
 	"github.com/ppmkh2sby/backend-library/helpers/logformat"
 	"github.com/ppmkh2sby/backend-library/models"
@@ -8,7 +9,7 @@ import (
 )
 
 // CreateUser is function on repository for saving new user to database
-func (p *postgresDB) CreateUser(user *models.Users) (*models.Users, error) {
+func (p *postgresDB) CreateUser(ctx context.Context, user *models.Users) (*models.Users, error) {
 	queryStr := fmt.Sprintf("INSERT INTO %s (id, username, password, email, role, card_id, santri_id, created_at, updated_at)", usersTable)
 	queryStr += "VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)"
 

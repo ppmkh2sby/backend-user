@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"context"
 	"fmt"
 	"github.com/ppmkh2sby/backend-library/helpers/logformat"
 	"github.com/ppmkh2sby/backend-library/models"
@@ -8,7 +9,7 @@ import (
 )
 
 // UpdateUser is function on repository to handle update user by id
-func (p *postgresDB) UpdateUser(user *models.Users) error {
+func (p *postgresDB) UpdateUser(ctx context.Context, user *models.Users) error {
 	queryStr := fmt.Sprintf("UPDATE %s SET username = $1, email = $2, updated_at = $3 WHERE id = $4", usersTable)
 
 	_, err := p.db.Exec(queryStr, user.Username, user.Email, time.Now(), user.ID)
