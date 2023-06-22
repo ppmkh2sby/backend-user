@@ -4,7 +4,8 @@ go 1.20
 
 require (
 	github.com/gofiber/fiber/v2 v2.46.0
-	github.com/ppmkh2sby/backend-library v0.0.0-20230413040309-5b5f002aa8e2
+	github.com/lib/pq v1.10.9
+	github.com/ppmkh2sby/backend-library v0.0.0-20230622142130-6617ee3e1d7c
 	github.com/sirupsen/logrus v1.9.0
 	gopkg.in/yaml.v3 v3.0.1
 )

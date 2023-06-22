@@ -27,8 +27,7 @@ type ServiceConfig struct {
 
 // ServiceDataConfig contains the service data configuration
 type ServiceDataConfig struct {
-	Address  string `yaml:"address"`
-	Database string `yaml:"database"`
+	Address string `yaml:"address"`
 }
 
 // SourceDataConfig contains the source data configuration

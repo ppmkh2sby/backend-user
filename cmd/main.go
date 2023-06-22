@@ -3,9 +3,10 @@ package main
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/ppmkh2sby/backend-library/helpers/image"
 	"github.com/ppmkh2sby/backend-user/app/route"
 	"github.com/ppmkh2sby/backend-user/config"
-	_db "github.com/ppmkh2sby/backend-user/db"
+	"github.com/ppmkh2sby/backend-user/db"
 	"github.com/sirupsen/logrus"
 	"runtime"
 )
@@ -25,16 +26,18 @@ func main() {
 	}
 	logrus.SetFormatter(customFormatter)
 	logrus.SetReportCaller(true)
+	logrus.Printf("Developed by %v\n%v", image.Developer, image.Ppmkh2sbyASCII)
+	logrus.Println("Start Service...")
 
 	//get config
-	configLoader := config.NewYamlConfigLoader("backend-user.yaml")
+	configLoader := config.NewYamlConfigLoader("backend_user.yaml")
 	config, err := configLoader.GetServiceConfig()
 	if err != nil {
 		logrus.Fatalf("Unable to load configuration: %w", err)
 	}
 
 	// Initialize database connection
-	db, err := _db.InitPostgresDB(postgresDB, config.SourceData.PostgresDBServer, config.SourceData.PostgresDBName,
+	db, err := db.InitPostgresDB("postgres", config.SourceData.PostgresDBServer, config.SourceData.PostgresDBName,
 		config.SourceData.PostgresDBUsername, config.SourceData.PostgresDBPassword, config.SourceData.PostgresDBPort,
 		config.SourceData.PostgresDBTimeout)
 	if err != nil {
@@ -45,7 +48,7 @@ func main() {
 	// Routing app with fiber
 	app := fiber.New()
 	route.Init(app, db)
-	logrus.Infof("Success routing app ... ")
+	logrus.Infof("Success routing app...")
 
 	// Running app
 	err = app.Listen(config.ServiceData.Address)
