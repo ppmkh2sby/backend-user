@@ -21,6 +21,9 @@ func (p *PostgresDB) GetUserByID(ctx context.Context, id string) (*models.Users,
 
 	for result.Next() {
 		err = result.Scan(&user.ID, &user.Username, &user.Email, &user.Role, &user.CardID, &user.SantriID, &user.CreatedAt, &user.UpdatedAt)
+		if err != nil {
+			return nil, logformat.PostgresScanError(err)
+		}
 	}
 
 	return user, nil
