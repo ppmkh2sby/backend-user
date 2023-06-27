@@ -8,12 +8,12 @@ import (
 )
 
 // GetUserByUsername is function on repository to handle get user by username for sign in
-func (p *postgresDB) GetUserByUsername(ctx context.Context, username string) (*models.Users, error) {
+func (p *PostgresDB) GetUserByUsername(ctx context.Context, username string) (*models.Users, error) {
 	var user models.Users
 
 	queryStr := fmt.Sprintf("SELECT id, username, password FROM %s WHERE username = $1", usersTable)
 
-	result, err := p.db.Query(queryStr, username)
+	result, err := p.DB.Query(queryStr, username)
 	if err != nil {
 		return nil, logformat.PostgresQueryResponseError(err)
 	}

@@ -10,8 +10,8 @@ const (
 	usersTable = "users"
 )
 
-type postgresDB struct {
-	db *sql.DB
+type PostgresDB struct {
+	DB *sql.DB
 }
 
 type UserRepository interface {
@@ -25,6 +25,6 @@ type UserRepository interface {
 }
 
 // NewUserRepository is function to initial user repository
-func NewUserRepository(db *sql.DB) *postgresDB {
-	return &postgresDB{db: db}
+func NewUserRepository(db *sql.DB) *PostgresDB {
+	return &PostgresDB{DB: db}
 }

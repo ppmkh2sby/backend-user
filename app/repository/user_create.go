@@ -9,11 +9,11 @@ import (
 )
 
 // CreateUser is function on repository for saving new user to database
-func (p *postgresDB) CreateUser(ctx context.Context, user *models.Users) (*models.Users, error) {
+func (p *PostgresDB) CreateUser(ctx context.Context, user *models.Users) (*models.Users, error) {
 	queryStr := fmt.Sprintf("INSERT INTO %s (id, username, password, email, role, card_id, santri_id, created_at, updated_at)", usersTable)
 	queryStr += "VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)"
 
-	_, err := p.db.Exec(queryStr, user.ID, user.Username, user.Password, user.Email, user.Role, user.CardID, user.SantriID, time.Now(), time.Now())
+	_, err := p.DB.Exec(queryStr, user.ID, user.Username, user.Password, user.Email, user.Role, user.CardID, user.SantriID, time.Now(), time.Now())
 	if err != nil {
 		return nil, logformat.PostgresExecResponseError(err)
 	}

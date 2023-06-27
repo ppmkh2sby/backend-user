@@ -7,10 +7,10 @@ import (
 )
 
 // ChangePasswordUser is function on repository to handle change user's password
-func (p *postgresDB) ChangePasswordUser(ctx context.Context, id, password string) error {
+func (p *PostgresDB) ChangePasswordUser(ctx context.Context, id, password string) error {
 	queryStr := fmt.Sprintf("UPDATE %s SET password = $1 WHERE id = $2", usersTable)
 
-	_, err := p.db.Exec(queryStr, password, id)
+	_, err := p.DB.Exec(queryStr, password, id)
 	if err != nil {
 		return logformat.PostgresExecResponseError(err)
 	}

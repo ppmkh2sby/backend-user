@@ -3,9 +3,10 @@ module github.com/ppmkh2sby/backend-user
 go 1.20
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.5.0
 	github.com/gofiber/fiber/v2 v2.46.0
 	github.com/lib/pq v1.10.9
-	github.com/ppmkh2sby/backend-library v0.0.0-20230622142130-6617ee3e1d7c
+	github.com/ppmkh2sby/backend-library v0.0.0-20230626020407-90485db819a0
 	github.com/sirupsen/logrus v1.9.0
 	gopkg.in/yaml.v3 v3.0.1
 )
@@ -21,6 +22,7 @@ require (
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/savsgio/dictpool v0.0.0-20221023140959-7bf2e61cea94 // indirect
 	github.com/savsgio/gotils v0.0.0-20230208104028-c358bd845dee // indirect
+	github.com/stretchr/testify v1.8.4 // indirect
 	github.com/tinylib/msgp v1.1.8 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.47.0 // indirect

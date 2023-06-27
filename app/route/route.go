@@ -1,18 +1,18 @@
 package route
 
 import (
+	"database/sql"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/ppmkh2sby/backend-user/app/controller"
 	"github.com/ppmkh2sby/backend-user/app/repository"
 	"github.com/ppmkh2sby/backend-user/app/usecase"
-	"github.com/ppmkh2sby/backend-user/db"
 )
 
 // Init is function to initial route app
-func Init(app *fiber.App, db *db.PostgresDB) {
-	userRepository := repository.NewUserRepository(db.DB)
+func Init(app *fiber.App, db *sql.DB) {
+	userRepository := repository.NewUserRepository(db)
 	userUsecase := usecase.NewUserUsecase(userRepository)
 	userController := controller.NewUserController(userUsecase)
 

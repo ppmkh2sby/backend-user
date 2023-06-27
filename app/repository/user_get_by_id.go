@@ -8,13 +8,13 @@ import (
 )
 
 // GetUserByID is function on repository for get user specific by id user
-func (p *postgresDB) GetUserByID(ctx context.Context, id string) (*models.Users, error) {
+func (p *PostgresDB) GetUserByID(ctx context.Context, id string) (*models.Users, error) {
 	var user *models.Users
 
 	queryStr := "SELECT id, username, email, role, card_id, santri_id, created_at, updated_at "
 	queryStr += fmt.Sprintf("FROM %s WHERE id = %s", usersTable, id)
 
-	result, err := p.db.Query(queryStr)
+	result, err := p.DB.Query(queryStr)
 	if err != nil {
 		return nil, logformat.PostgresQueryResponseError(err)
 	}
